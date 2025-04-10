@@ -63,12 +63,13 @@ ejecucion_supervisado()
 # Parte 2: Aprendizaje No Supervisado
 # Dataset: Cargar el dataset de wine
 def cargar_dataset_wine():
-    pass
+    return load_wine()
 
 # 2.1. Preprocesamiento de Datos
 # Normalizar los datos
 def normalizar_datos(X):
-    pass
+    scaler = StandardScaler()
+    return scaler.fit_transform(X)
 
 # 2.2. Entrenamiento del Modelo
 # Entrenar un modelo de K-Means
