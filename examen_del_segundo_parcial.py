@@ -39,12 +39,24 @@ def entrenar_modelo_logistico(X_train, y_train):
 # 1.3. Evaluación del Modelo
 # Realizar predicciones y evaluar el modelo
 def evaluar_modelo(modelo, X_test, y_test):
-    pass
+    y_pred = modelo.predict(X_test)
+    accuracy = accuracy_score(y_test, y_pred)
+    conf_matrix = confusion_matrix(y_test, y_pred)
+    class_report = classification_report(y_test, y_pred)
+    return accuracy, conf_matrix, class_report
 
-# Ejecución del examen
-# Parte 1: Aprendizaje Supervisado
+
 def ejecucion_supervisado():
-    pass
+    data = cargar_dataset_digits()
+    X_scaled = escalar_datos(data.data)
+    X_train, X_test, y_train, y_test = dividir_datos(X_scaled, data.target)
+    modelo = entrenar_modelo_logistico(X_train, y_train)
+    accuracy, conf_matrix, class_report = evaluar_modelo(modelo, X_test, y_test)
+    print(f"Accuracy: {accuracy}")
+    print("Confusion Matrix:")
+    print(conf_matrix)
+    print("Classification Report:")
+    print(class_report)
 
 ejecucion_supervisado()
 
