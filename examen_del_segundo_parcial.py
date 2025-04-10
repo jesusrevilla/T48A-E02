@@ -89,7 +89,7 @@ def visualizar_clusters(X, labels):
     plt.title("Clusters")
     plt.xlabel("Feature 1")
     plt.ylabel("Feature 2")
-    plt.show())
+    plt.show()
 
 # Parte 2: Aprendizaje No Supervisado
 def ejecucion_no_supervisado():
