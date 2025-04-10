@@ -71,22 +71,31 @@ def normalizar_datos(X):
     scaler = StandardScaler()
     return scaler.fit_transform(X)
 
-# 2.2. Entrenamiento del Modelo
-# Entrenar un modelo de K-Means
-def entrenar_modelo_kmeans(X, n_clusters=3):
-    pass
-
 # 2.3. Evaluación del Modelo
 # Asignar etiquetas a los datos
 def asignar_etiquetas(modelo, X):
-    pass
-
+    return modelo.predict(X)
+    
 # Visualizar los clusters
-def visualizar_clusters(X, labels):
-    pass
+def visualizar_clusters(X, labels):   
+    plt.scatter(X[:, 0], X[:, 1], c=labels)
+    plt.title("Clusters")
+    plt.xlabel("Feature 1")
+    plt.ylabel("Feature 2")
+    plt.show()
 
 # Parte 2: Aprendizaje No Supervisado
-def ejecucion_no_supervisado():
-    pass
+def ejecucion_supervisado():
+    data = cargar_dataset_digits()
+    X_scaled = escalar_datos(data.data)
+    X_train, X_test, y_train, y_test = dividir_datos(X_scaled, data.target)
+    modelo = entrenar_modelo_logistico(X_train, y_train)
+    accuracy, conf_matrix, class_report = evaluar_modelo(modelo, X_test, y_test)
+    print(f"Accuracy: {accuracy}")
+    print("Confusion Matrix:")
+    print(conf_matrix)
+    print("Classification Report:")
+    print(class_report)
+
 ejecucion_no_supervisado()
 
