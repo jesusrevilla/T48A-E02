@@ -1,5 +1,9 @@
-# examen_del_segundo_parcial.py
- 
+# Examen Práctico de Minería de Datos
+# Universidad Politécnica de San Luis Potosí
+# Curso: Minería de Datos
+# Tema: Aprendizaje Supervisado y No Supervisado
+
+#Importar librerias
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
