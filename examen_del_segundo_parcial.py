@@ -75,8 +75,8 @@ def cargar_dataset_wine():
 # 2.1. Preprocesamiento de Datos
 # Normalizar los datos
 def normalizar_datos(X):
-    X = StandardScaler()
-    x = normalizar_datos.fit_transform(X.data)
+    scaler = StandardScaler()
+    x = scaler.fit_transform(X.data)
     y = X.target
 
     return x, y
