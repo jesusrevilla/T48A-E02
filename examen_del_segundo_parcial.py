@@ -60,9 +60,9 @@ def entrenar_modelo_logistico(X_train, y_train):
 # Realizar predicciones y evaluar el modelo
 def evaluar_modelo(modelo, X_test, y_test):
 
-  y_pred = modelo.predict(X_test)
-
-  return y_pred
+  accuracy, conf_matrix, class_report = evaluar_modelo(modelo, X_test, y_test)
+  
+  return accuracy, conf_matrix, class_report
 
 # Ejecución del examen
 # Parte 1: Aprendizaje Supervisado
@@ -74,7 +74,7 @@ def ejecucion_supervisado():
   X_scaled = escalar_datos(X)
   X_train, X_test, y_train, y_test = dividir_datos(X_scaled, y)
   modelo = entrenar_modelo_logistico(X_train, y_train)
-  y_pred = evaluar_modelo(modelo, X_test, y_test)
+  evaluacion = evaluar_modelo(modelo, X_test, y_test)
 
 
 ejecucion_supervisado()
