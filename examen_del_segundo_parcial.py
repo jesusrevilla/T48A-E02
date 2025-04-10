@@ -24,7 +24,8 @@ def cargar_dataset_digits():
 # 1.1. Preprocesamiento de Datos
 # Escalar los datos
 def escalar_datos(X):
-    x = X.data
+    scaler = StandardScaler()
+    x = scaler.fit_transform(X.data)
     y = X.target
     return x, y
     pass
@@ -74,8 +75,10 @@ def cargar_dataset_wine():
 # 2.1. Preprocesamiento de Datos
 # Normalizar los datos
 def normalizar_datos(X):
-    x = X.data
+    X = StandardScaler()
+    x = normalizar_datos.fit_transform(X.data)
     y = X.target
+
     return x, y
     pass
 
