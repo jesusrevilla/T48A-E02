@@ -33,7 +33,7 @@ def escalar_datos(X):
 def dividir_datos(X, y):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
     return X_train, X_test, y_train, y_test
-
+    
 # 1.2. Entrenamiento del Modelo
 # Entrenar un modelo de Regresión Logística con 500 iteraciones máximo.
 def entrenar_modelo_logistico(X_train, y_train):
@@ -53,11 +53,11 @@ def evaluar_modelo(modelo, X_test, y_test):
 # Ejecución del examen
 # Parte 1: Aprendizaje Supervisado
 def ejecucion_supervisado():
-    digits, X, y = cargar_dataset_digits()
-    X_scaled = escalar_datos(X)
-    X_train, X_test, y_train, y_test = dividir_datos(X, y)
-    model = entrenar_modelo_logistico(X_train, y_train)
-    accuracy, confusion, classification_rep = evaluar_modelo(model, X_test, y_test)
+    data = cargar_dataset_digits()
+    X_scaled = escalar_datos(data.data)
+    X_train, X_test, y_train, y_test = dividir_datos(data.data, data.target)
+    modelo = entrenar_modelo_logistico(X_train, y_train)
+    accuracy, conf_matrix, class_report = evaluar_modelo(modelo, X_test, y_test)
 
 # Parte 2: Aprendizaje No Supervisado
 # Dataset: Cargar el dataset de wine
@@ -97,11 +97,11 @@ def visualizar_clusters(X, labels):
 
 # Parte 2: Aprendizaje No Supervisado
 def ejecucion_no_supervisado():
-    wine, X, y = cargar_dataset_wine()
-    X_normalized = normalizar_datos(X)
-    kmeans = entrenar_modelo_kmeans(X)
-    labels = asignar_etiquetas(kmeans, X)
-    visualizar_clusters(X, labels)
+    data = cargar_dataset_wine()
+    X_scaled = normalizar_datos(data.data)
+    modelo = entrenar_modelo_kmeans(X_scaled)
+    labels = asignar_etiquetas(modelo, X_scaled)
+    visualizar_clusters(data.data, labels)
 
 ejecucion_no_supervisado()
 
