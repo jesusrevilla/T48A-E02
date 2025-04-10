@@ -50,9 +50,6 @@ def evaluar_modelo(modelo, X_test, y_test):
     accuracy = accuracy_score(y_test, y_pred)
     confusion = confusion_matrix(y_test, y_pred)
     report = classification_report(y_test, y_pred)
-    print("Precision:", accuracy)
-    print("Matriz de confusion:\n", confusion)
-    print("Reporte de clasificacion:\n", report)
     pass
 
 # Ejecución del examen
@@ -70,8 +67,8 @@ ejecucion_supervisado()
 # Parte 2: Aprendizaje No Supervisado
 # Dataset: Cargar el dataset de wine
 def cargar_dataset_wine():
-    data2 = load_wine()
-    return data2
+    data = load_wine()
+    return data
     pass
 
 # 2.1. Preprocesamiento de Datos
