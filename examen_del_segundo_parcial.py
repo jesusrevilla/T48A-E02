@@ -17,12 +17,13 @@ from sklearn.preprocessing import StandardScaler
 # Parte 1: Aprendizaje Supervisado
 # Dataset: Cargar el dataset de digits
 def cargar_dataset_digits():
-    pass
+    return load_digits()
 
 # 1.1. Preprocesamiento de Datos
 # Escalar los datos
 def escalar_datos(X):
-    pass
+    scaler = StandardScaler()
+    return scaler.fit_transform(X)
 
 # Dividir los datos en conjuntos de entrenamiento y prueba
 def dividir_datos(X, y):
