@@ -75,7 +75,6 @@ def ejecucion_supervisado():
   X_train, X_test, y_train, y_test = dividir_datos(X_scaled, y)
   modelo = entrenar_modelo_logistico(X_train, y_train)
   y_pred = evaluar_modelo(modelo, X_test, y_test)
-  print("Accuracy:", accuracy_score(y_test, y_pred))
 
 
 ejecucion_supervisado()
