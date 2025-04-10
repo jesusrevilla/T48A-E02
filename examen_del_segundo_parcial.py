@@ -27,12 +27,14 @@ def escalar_datos(X):
 
 # Dividir los datos en conjuntos de entrenamiento y prueba
 def dividir_datos(X, y):
-    pass
+    return train_test_split(X, y, test_size=0.3, random_state=42)
 
 # 1.2. Entrenamiento del Modelo
 # Entrenar un modelo de Regresión Logística con 500 iteraciones máximo.
 def entrenar_modelo_logistico(X_train, y_train):
-    pass
+    modelo = LogisticRegression(max_iter=500)
+    modelo.fit(X_train, y_train)
+    return modelo
 
 # 1.3. Evaluación del Modelo
 # Realizar predicciones y evaluar el modelo
