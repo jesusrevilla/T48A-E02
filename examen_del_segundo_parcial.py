@@ -29,11 +29,14 @@ def cargar_dataset_digits():
   digits = load_digits()
   X = digits.data
   y = digits.target
+  print("Shape of data:", X.shape)  # Add this line
   return X, y
 
 # 1.1. Preprocesamiento de Datos
 # Escalar los datos
 def escalar_datos(X):
+  data = cargar_dataset_digits()
+  X_scaled = escalar_datos(data[0])
   scaler = StandardScaler()
   X_scaled = scaler.fit_transform(X)
   return X_scaled
@@ -53,6 +56,8 @@ def entrenar_modelo_logistico(X_train, y_train):
 # 1.3. Evaluación del Modelo
 # Realizar predicciones y evaluar el modelo
 def evaluar_modelo(modelo, X_test, y_test):
+    data = cargar_dataset_digits()
+    X_scaled = escalar_datos(data[0])
     y_pred = modelo.predict(X_test)
     accuracy = accuracy_score(y_test, y_pred)
     conf_matrix = confusion_matrix(y_test, y_pred)
@@ -67,7 +72,7 @@ def evaluar_modelo(modelo, X_test, y_test):
 def ejecucion_supervisado():
     X, y = cargar_dataset_digits()
     X_scaled = escalar_datos(X)
-    X_train, X_test, y_train, y_test = dividir_datos(X_scaled, y)
+    X_train, X_test, y_train, y_test = dividir_datos(X_scaled, y)  # Close the parenthesis here
     modelo = entrenar_modelo_logistico(X_train, y_train)
     evaluar_modelo(modelo, X_test, y_test)
 
