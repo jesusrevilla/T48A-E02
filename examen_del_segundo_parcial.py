@@ -101,4 +101,3 @@ def ejecucion_no_supervisado():
     print(labels)
 
 ejecucion_no_supervisado()
-
