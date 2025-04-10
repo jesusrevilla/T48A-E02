@@ -20,7 +20,7 @@ def cargar_dataset_digits():
     data = load_digits()
     X = data.data
     y = data.target
-    return X, y
+    return data
 
 # 1.1. Preprocesamiento de Datos
 # Escalar los datos
@@ -53,9 +53,9 @@ def evaluar_modelo(modelo, X_test, y_test):
 # Ejecución del examen
 # Parte 1: Aprendizaje Supervisado
 def ejecucion_supervisado():
-    X, y = cargar_dataset_digits()
-    X_s = escalar_datos(X)
-    X_tr, X_te, y_tr, y_te = dividir_datos(X, y)
+    data = cargar_dataset_digits()
+    X_s = escalar_datos(data.data)
+    X_tr, X_te, y_tr, y_te = dividir_datos(data.data, data.target)
     modelo = entrenar_modelo_logistico(X_tr, y_tr)
     evaluar_modelo(modelo, X_te, y_te)
 
@@ -67,7 +67,7 @@ def cargar_dataset_wine():
     data = load_wine()
     X = data.data
     y = data.target
-    return X, y
+    return data
 
 # 2.1. Preprocesamiento de Datos
 # Normalizar los datos
@@ -100,10 +100,10 @@ def visualizar_clusters(X, labels):
 
 # Parte 2: Aprendizaje No Supervisado
 def ejecucion_no_supervisado():
-    X, y = cargar_dataset_wine()
-    X_nor = normalizar_datos(X)
+    data = cargar_dataset_wine()
+    X_nor = normalizar_datos(data.data)
     modelo = entrenar_modelo_kmeans(X_nor)
-    labels = asignar_etiquetas(modelo, X)
-    visualizar_clusters(X, labels)
+    labels = asignar_etiquetas(modelo, data.data)
+    visualizar_clusters(data.data, labels)
 
 ejecucion_no_supervisado()
