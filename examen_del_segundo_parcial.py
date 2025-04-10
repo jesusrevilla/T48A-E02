@@ -70,7 +70,14 @@ def cargar_dataset_wine():
 def normalizar_datos(X):
     scaler = StandardScaler()
     return scaler.fit_transform(X)
-
+    
+# 2.2. Entrenamiento del Modelo
+# Entrenar un modelo de K-Means
+def entrenar_modelo_kmeans(X, n_clusters=3):
+    modelo = KMeans(n_clusters=n_clusters, random_state=42, n_init=10)
+    modelo.fit(X)
+    return modelo
+    
 # 2.3. Evaluación del Modelo
 # Asignar etiquetas a los datos
 def asignar_etiquetas(modelo, X):
@@ -82,7 +89,7 @@ def visualizar_clusters(X, labels):
     plt.title("Clusters")
     plt.xlabel("Feature 1")
     plt.ylabel("Feature 2")
-    plt.show()
+    plt.show())
 
 # Parte 2: Aprendizaje No Supervisado
 def ejecucion_no_supervisado():
