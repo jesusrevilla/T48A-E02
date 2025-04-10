@@ -2,7 +2,7 @@
 # Universidad Politécnica de San Luis Potosí
 # Curso: Minería de Datos
 # Tema: Aprendizaje Supervisado y No Supervisado
-# Gerardo Gael Elias Delgadillo - 177735
+#Gerardo Gael Elias Delgadillo - 177735
 # Importar las librerías necesarias
 import numpy as np
 import pandas as pd
@@ -18,9 +18,7 @@ from sklearn.preprocessing import StandardScaler
 # Dataset: Cargar el dataset de digits
 def cargar_dataset_digits():
     digits = load_digits()
-    X = digits.data
-    y = digits.target
-    return digits, X, y
+    return digits
 
 # 1.1. Preprocesamiento de Datos
 # Escalar los datos
@@ -34,6 +32,7 @@ def dividir_datos(X, y):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
     return X_train, X_test, y_train, y_test
     
+
 # 1.2. Entrenamiento del Modelo
 # Entrenar un modelo de Regresión Logística con 500 iteraciones máximo.
 def entrenar_modelo_logistico(X_train, y_train):
@@ -63,9 +62,7 @@ def ejecucion_supervisado():
 # Dataset: Cargar el dataset de wine
 def cargar_dataset_wine():
     wine = load_wine()
-    X = wine.data
-    y = wine.target
-    return wine, X, y
+    return wine
 
 # 2.1. Preprocesamiento de Datos
 # Normalizar los datos
