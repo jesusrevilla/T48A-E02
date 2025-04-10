@@ -17,60 +17,92 @@ from sklearn.preprocessing import StandardScaler
 # Parte 1: Aprendizaje Supervisado
 # Dataset: Cargar el dataset de digits
 def cargar_dataset_digits():
-    pass
+  digits = load_digits()
+  return digits
 
 # 1.1. Preprocesamiento de Datos
 # Escalar los datos
 def escalar_datos(X):
-    pass
+  escalador = StandardScaler()
+  X_escalado = escalador.fit_transform(X)
+  return X_escalado
 
 # Dividir los datos en conjuntos de entrenamiento y prueba
 def dividir_datos(X, y):
-    pass
+  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+  return X_train, X_test, y_train, y_test
 
 # 1.2. Entrenamiento del Modelo
 # Entrenar un modelo de Regresión Logística con 500 iteraciones máximo.
 def entrenar_modelo_logistico(X_train, y_train):
-    pass
+  modelo = LogisticRegression(max_iter=500)
+  modelo.fit(X_train, y_train)
+  return modelo
 
 # 1.3. Evaluación del Modelo
 # Realizar predicciones y evaluar el modelo
 def evaluar_modelo(modelo, X_test, y_test):
-    pass
+  y_pred = modelo.predict(X_test)
+  accuracy = accuracy_score(y_test, y_pred)
+  conf_matrix = confusion_matrix(y_test, y_pred)
+  class_report = classification_report(y_test, y_pred)
+  return accuracy, conf_matrix, class_report
 
 # Ejecución del examen
 # Parte 1: Aprendizaje Supervisado
 def ejecucion_supervisado():
-    pass
+  data = cargar_dataset_digits()
+  X_scaled = escalar_datos(data.data)
+  X_train, X_test, y_train, y_test = dividir_datos(X_scaled, data.target)
+  modelo = entrenar_modelo_logistico(X_train, y_train)
+  accuracy, conf_matrix, class_report = evaluar_modelo(modelo, X_test, y_test)
 
+  print(f'Accuracy: {accuracy}')
+  print('Confusion Matrix:')
+  print(conf_matrix)
+  print('Classification Report:')
+  print(class_report)
 ejecucion_supervisado()
 
 # Parte 2: Aprendizaje No Supervisado
 # Dataset: Cargar el dataset de wine
 def cargar_dataset_wine():
-    pass
+    wine = load_wine()
+    return wine
 
 # 2.1. Preprocesamiento de Datos
 # Normalizar los datos
 def normalizar_datos(X):
-    pass
+    scaler = StandardScaler()
+    X_normalizado = scaler.fit_transform(X)
+    return X_normalizado
 
 # 2.2. Entrenamiento del Modelo
 # Entrenar un modelo de K-Means
 def entrenar_modelo_kmeans(X, n_clusters=3):
-    pass
+    modelo = KMeans(n_clusters=n_clusters, random_state=42, n_init=10)
+    modelo.fit(X)
+    return modelo
 
 # 2.3. Evaluación del Modelo
 # Asignar etiquetas a los datos
 def asignar_etiquetas(modelo, X):
-    pass
+    return modelo.predict(X)
 
 # Visualizar los clusters
 def visualizar_clusters(X, labels):
-    pass
+    plt.scatter(X[:, 0], X[:, 1], c=labels, cmap='viridis')
+    plt.xlabel("Feature 1")
+    plt.ylabel("Feature 2")
+    plt.title("Clusters de K-Means")
+    plt.show()
 
 # Parte 2: Aprendizaje No Supervisado
 def ejecucion_no_supervisado():
-    pass
+    data = cargar_dataset_wine()
+    X_normalizado = normalizar_datos(data.data)
+    modelo = entrenar_modelo_kmeans(X_normalizado)
+    labels = asignar_etiquetas(modelo, X_normalizado)
+    visualizar_clusters(X_normalizado, labels)
+    
 ejecucion_no_supervisado()
-
