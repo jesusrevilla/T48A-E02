@@ -85,17 +85,13 @@ def visualizar_clusters(X, labels):
     plt.show()
 
 # Parte 2: Aprendizaje No Supervisado
-def ejecucion_supervisado():
-    data = cargar_dataset_digits()
-    X_scaled = escalar_datos(data.data)
-    X_train, X_test, y_train, y_test = dividir_datos(X_scaled, data.target)
-    modelo = entrenar_modelo_logistico(X_train, y_train)
-    accuracy, conf_matrix, class_report = evaluar_modelo(modelo, X_test, y_test)
-    print(f"Accuracy: {accuracy}")
-    print("Confusion Matrix:")
-    print(conf_matrix)
-    print("Classification Report:")
-    print(class_report)
+def ejecucion_no_supervisado():
+    data = cargar_dataset_wine()
+    X_scaled = normalizar_datos(data.data)
+    modelo = entrenar_modelo_kmeans(X_scaled)
+    labels = asignar_etiquetas(modelo, X_scaled)
+    print("Etiquetas asignadas por KMeans:")
+    print(labels)
 
 ejecucion_no_supervisado()
 
